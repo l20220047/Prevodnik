@@ -3,6 +3,8 @@ import reactLogo from './assets/react.svg'
 import appLogo from '/favicon.svg'
 import PWABadge from './PWABadge.jsx'
 import './App.css'
+import { Prevod_kurzu } from './Components/Prevod_kurzu.jsx';
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -30,6 +32,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <PWABadge />
+      <Prevod_kurzu/>
     </>
   )
 }
