@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
-export const Prevod = () => {
+const Prevod = () => {
     const [cislo, setCislo] = useState(0);
     const [kurzy, setKurzy] = useState(undefined);
     const [vysledek, setVysledek] = useState(0);
@@ -11,7 +11,7 @@ export const Prevod = () => {
             const response = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR");
             const data = await response.json();
             setKurzy(data.rates);
-            console.log(kurzy);
+            console.log(data.rates);
         } catch(error) {
             console.log(error);
         }
@@ -23,13 +23,11 @@ export const Prevod = () => {
 
     const vypocitej = () => {
         setVysledek(vybrany * cislo);
-    }
+    };
 
-    return(
+    return (
         <div>
-            <h1>
-                Převod EUR do jiné měny
-            </h1>
+            <h1>Převod EUR do jiné měny</h1>
             <div>
                 <input 
                     type="number"
@@ -44,9 +42,11 @@ export const Prevod = () => {
                         ))
                     }
                 </select>
-                <button onClick={() => vypocitej()}>Převeď</button>
+                <button onClick={vypocitej}>Převeď</button>
             </div>
             <h3>{vysledek}</h3>
         </div>
-    )
-}
+    );
+};
+
+export default Prevod;
