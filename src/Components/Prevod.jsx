@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
 export const Prevod = () => {
     const [cislo, setCislo] = useState(0);
-    const [kurzy, setKurzy] = useState({});
+    const [kurzy, setKurzy] = useState(undefined);
     const [vysledek, setVysledek] = useState(0);
     const [vybrany, setVybrany] = useState(0);
 
@@ -11,24 +11,27 @@ export const Prevod = () => {
             const response = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR");
             const data = await response.json();
             setKurzy(data.rates);
-        } catch (error) {
+            console.log(kurzy);
+        } catch(error) {
             console.log(error);
         }
     };
-
+    
     useEffect(() => {
         getKurzy();
     }, []);
 
     const vypocitej = () => {
-        setVysledek(Number(cislo) * Number(vybrany));
-    };
+        setVysledek(vybrany * cislo);
+    }
 
-    return (
+    return(
         <div>
-            <h1>Převod EUR do jiné měny</h1>
+            <h1>
+                Převod EUR do jiné měny
+            </h1>
             <div>
-                <input
+                <input 
                     type="number"
                     value={cislo}
                     onChange={(e) => setCislo(e.target.value)}
@@ -41,9 +44,9 @@ export const Prevod = () => {
                         ))
                     }
                 </select>
-                <button onClick={vypocitej}>Převeď</button>
+                <button onClick={() => vypocitej()}>Převeď</button>
             </div>
-            <h3>{vysledek.toFixed(2)}</h3>
+            <h3>{vysledek}</h3>
         </div>
-    );
-};
+    )
+}
