@@ -1,13 +1,12 @@
-import './App.css'
-import { Prevod } from 'src/components/Prevod.jsx'
+import './App.css';
+import { Prevod } from './components/Prevod.jsx';
 
 function App() {
-
   return (
     <>
       <Prevod />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
