@@ -1,5 +1,6 @@
 import './App.css';
-import Prevod from './components/Prevod';
+import Prevod from './components/Prevod.jsx';
+
 
 
 function App() {
